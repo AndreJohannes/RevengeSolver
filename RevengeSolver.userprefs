@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="RevengeSolver/RevengeSolver.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RevengeSolver/Phases/Phase1.cs">
+    <Files>
+      <File FileName="RevengeSolver/MainClass.cs" Line="31" Column="33" />
+      <File FileName="RevengeSolver/Cube/Twists.cs" Line="52" Column="3" />
+      <File FileName="RevengeSolver/CubeCanvas.cs" Line="1" Column="1" />
+      <File FileName="RevengeSolver/Phases/Phase1.cs" Line="18" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
