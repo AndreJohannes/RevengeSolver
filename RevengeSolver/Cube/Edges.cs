@@ -93,12 +93,33 @@ namespace RevengeSolver
 			}
 		}
 
+		private int sign {
+			get {
+				for (int i = 0; i < pairs.GetLength (0); i++) {
+					if (this.Equals (pairs [i, 0]))
+						return 1;
+					if (this.Equals (pairs [i, 1]))
+						return -1;
+				}
+				return -1;
+			}
+		}
+
 		public static int[] getPairs ()
 		{
 			int[] retArray = new int[order.Length];
 			int idx = 0;
 			foreach (Edge edge in order) {
 				retArray [idx++] = edge.pIndex; 
+			}
+			return retArray;
+		}
+
+		public static int[] getSigns (){
+			int[] retArray = new int[order.Length];
+			int idx = 0;
+			foreach (Edge edge in order) {
+				retArray [idx++] = edge.sign; 
 			}
 			return retArray;
 		}

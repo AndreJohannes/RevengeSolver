@@ -68,8 +68,9 @@ namespace RevengeSolver
 		private readonly int[] edgePermutation;
 		private readonly int[] pairPermutation;
 		private readonly int[] cornerPermutation;
-		private readonly int[] cornerOrientation;
 		private readonly int[] centerPermutation;
+		private readonly int[] cornerOrientation;
+		private readonly int[] pairOrientation;
 
 		private Twist (string name, Edge[,] edgeCycles, Corner[] cornerCycle, Center[] centerCycle)
 		{
@@ -109,6 +110,13 @@ namespace RevengeSolver
 				int index2 = centerCycle [(j + 1) % length].index;
 				centerPermutation [index1] = index2;
 			}
+
+			pairOrientation = new int[12];
+			int[] signs = Edge.getSigns ();
+			for (int i = 0; i < 24; i++) {
+				pairOrientation[pairs[edgePermutation[i]]] = signs[i] * signs[edgePermutation[i]] ==1 ? 0 : 1;
+			}
+
 		}
 
 		private Twist (string name, Twist twist, int num)
@@ -119,13 +127,15 @@ namespace RevengeSolver
 			edgePermutation = Enumerable.Range (0, 24).ToArray ();
 			pairPermutation = Enumerable.Range (0, 12).ToArray ();
 			cornerOrientation = new int[8];
+			pairOrientation = new int[12];
 			for (int i = 0; i < num; i++) {
 				cornerPermutation = twist.apply (cornerPermutation, Type.Corners);
 				edgePermutation = twist.apply (edgePermutation, Type.Edges);
 				centerPermutation = twist.apply (centerPermutation, Type.Edges);
 				cornerOrientation = twist.apply (cornerOrientation, Type.Corners, orientation: true);
 				pairPermutation = twist.apply (pairPermutation, Type.EdgePairs);
-			}		
+				pairOrientation = twist.apply (pairOrientation, Type.EdgePairs, orientation: true);
+			}	
 		}
 
 		public string Name {
@@ -149,8 +159,9 @@ namespace RevengeSolver
 				retArray [i] = configuration [permutations [i]]; 
 			}
 			if (orientation) {
+				int[] orientations = type == Type.Corners ? cornerOrientation : pairOrientation;
 				for (int i = 0; i < retArray.Length; i++) {
-					retArray [i] = mod(retArray [i] + cornerOrientation [i],3);
+					retArray [i] = mod(retArray [i] + orientations [i],  24 / retArray.Length);
 				}
 			}
 			return retArray;

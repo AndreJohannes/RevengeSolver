@@ -33,7 +33,6 @@
   <ItemGroup>
     <Compile Include="MainClass.cs" />
     <Compile Include="CubeCanvas.cs" />
-    <Compile Include="Cube\ColorCube.cs" />
     <Compile Include="Cube\Corners.cs" />
     <Compile Include="Cube\Edges.cs" />
     <Compile Include="Cube\Faces.cs" />
@@ -46,6 +45,8 @@
     <Compile Include="Phases\IPhase.cs" />
     <Compile Include="Phases\Phase7.cs" />
     <Compile Include="Phases\Phase6.cs" />
+    <Compile Include="Phases\Phase5.cs" />
+    <Compile Include="ColorCube.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="gtk-sharp">
