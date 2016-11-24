@@ -117,12 +117,14 @@ namespace RevengeSolver
 			cornerPermutation = Enumerable.Range (0, 8).ToArray ();
 			centerPermutation = Enumerable.Range (0, 24).ToArray ();
 			edgePermutation = Enumerable.Range (0, 24).ToArray ();
+			pairPermutation = Enumerable.Range (0, 12).ToArray ();
 			cornerOrientation = new int[8];
 			for (int i = 0; i < num; i++) {
 				cornerPermutation = twist.apply (cornerPermutation, Type.Corners);
 				edgePermutation = twist.apply (edgePermutation, Type.Edges);
 				centerPermutation = twist.apply (centerPermutation, Type.Edges);
 				cornerOrientation = twist.apply (cornerOrientation, Type.Corners, orientation: true);
+				pairPermutation = twist.apply (pairPermutation, Type.EdgePairs);
 			}		
 		}
 

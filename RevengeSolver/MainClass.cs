@@ -5,6 +5,7 @@ using RevengeSolver;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace RevengeSolver
 {
@@ -21,9 +22,9 @@ namespace RevengeSolver
 			int[] edges = Enumerable.Range(0, 24).ToArray();
 			int[] corners = Enumerable.Range (0, 8).ToArray ();
 			int[] orientations = new int[8];
-			cube.setColors (Twist.R_.apply(edges, Type.Edges), 
-				Twist.R_.apply(corners, Type.Corners),
-				Twist.R_.apply(orientations, Type.Corners, orientation:true));
+			//cube.setColors (Twist.R_.apply(edges, Type.Edges), 
+			//	Twist.R_.apply(corners, Type.Corners),
+			//	Twist.R_.apply(orientations, Type.Corners, orientation:true));
 		
 			CubeCanvas a = new CubeCanvas ();
 			a.Colors = cube.colors; 
@@ -34,7 +35,21 @@ namespace RevengeSolver
 			w.Resize (40 * 4 * 4, 40 * 4 * 3);
 			//w.DeleteEvent += close_window;
 			w.ShowAll ();
-			Console.WriteLine (String.Format("Is equal: {0}" ,new MainClass ().compare (Twist.L)));
+			//Console.WriteLine (String.Format("Is equal: {0}" ,new MainClass ().compare (Twist.L)));
+			Cube c = new Cube();
+			Console.WriteLine (" ");
+			(new Phase7 ()).scramble (c,30);
+			foreach(Twist twist in c.Twists){
+				Console.WriteLine (twist.Name);
+			}
+			Console.WriteLine (" ");
+			cube.setColors (c);
+			LinkedList<Twist> twists = (new Phase7 ()).search (c);
+			c.twist (twists);
+			cube.setColors (c);
+			twists = (new Phase8 ()).search (c);
+			c.twist (twists);
+			cube.setColors (c);
 			Application.Run ();
 		}
 
@@ -44,7 +59,6 @@ namespace RevengeSolver
 
 			JObject o1 = JObject.Parse(File.ReadAllText(@"/home/andre/WorkProjects/rubiksrevengesolver/Output.json"));
 			return o1;
-
 
 		}
 
@@ -70,10 +84,7 @@ namespace RevengeSolver
 				Enumerable.SequenceEqual(centerList, centerReference);
 		}
 
-
 	}
-
-
 
 }
 

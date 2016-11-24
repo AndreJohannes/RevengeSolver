@@ -35,6 +35,10 @@ namespace RevengeSolver
 
 		}
 
+		public void setColors(Cube cube){
+			setColors (cube.EdgePosition, cube.CornerPosition, cube.CornerOrientation);
+		}
+
 		public void setColors (int[] edges, int[] corners, int[] orientations)
 		{
 			

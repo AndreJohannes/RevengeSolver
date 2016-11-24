@@ -44,24 +44,31 @@
     <Compile Include="Phases\Phase8.cs" />
     <Compile Include="Cube\Cube.cs" />
     <Compile Include="Phases\IPhase.cs" />
+    <Compile Include="Phases\Phase7.cs" />
+    <Compile Include="Phases\Phase6.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="gtk-sharp">
       <HintPath>..\..\..\..\usr\lib\mono\gac\gtk-sharp\2.12.0.0__35e10195dab3c99f\gtk-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="gdk-sharp">
-      <HintPath>..\..\..\..\usr\lib\mono\gac\gdk-sharp\2.12.0.0__35e10195dab3c99f\gdk-sharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="atk-sharp">
       <HintPath>..\..\..\..\usr\lib\mono\gac\atk-sharp\2.12.0.0__35e10195dab3c99f\atk-sharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cairo" />
     <Reference Include="glib-sharp">
       <HintPath>..\..\..\..\usr\lib\mono\gac\glib-sharp\2.12.0.0__35e10195dab3c99f\glib-sharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\usr\lib\monodevelop\bin\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gdk-sharp">
+      <HintPath>..\..\..\..\usr\lib\mono\gac\gdk-sharp\2.12.0.0__35e10195dab3c99f\gdk-sharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

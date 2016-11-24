@@ -41,9 +41,10 @@ namespace RevengeSolver
 		};
 
 		public static Edge[,] pairs = new Edge[,] {
-			{ UB, BU }, { UL, LU }, { UR, RU }, { UF, FU },
+			{ UB, BU }, { UF, FU }, { DF, FD }, { DB, BD },
+			{ UL, LU }, { UR, RU }, { DL, LD }, { DR, RD },
 			{ LB, BL }, { RB, BR }, { LF, FL }, { RF, FR },
-			{ DF, FD }, { DL, LD }, { DR, RD }, { DB, BD }
+
 		};
 
 		private Faces _face1;
@@ -94,10 +95,10 @@ namespace RevengeSolver
 
 		public static int[] getPairs ()
 		{
-			int[] retArray = new int[]{ order.Length };
+			int[] retArray = new int[order.Length];
 			int idx = 0;
 			foreach (Edge edge in order) {
-				retArray [idx] = edge.pIndex; 
+				retArray [idx++] = edge.pIndex; 
 			}
 			return retArray;
 		}

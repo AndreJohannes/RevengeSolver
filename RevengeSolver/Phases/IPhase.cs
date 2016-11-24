@@ -8,6 +8,8 @@ namespace RevengeSolver
 
 		LinkedList<Twist> search(Cube cube);
 
+		void scramble (Cube cube, int count);
+
 	}
 }
 

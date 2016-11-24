@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RevengeSolver
 {
@@ -16,10 +17,10 @@ namespace RevengeSolver
 		public Cube ()
 		{
 			twists = new LinkedList<Twist> ();
-			_cornerPosition= new int[8];
+			_cornerPosition = Enumerable.Range (0, 8).ToArray ();
 			_cornerOrientation = new int[8];
-			_edgePosition = new int[24];
-			_centerPosition = new int[24];
+			_edgePosition = Enumerable.Range (0, 24).ToArray ();
+			_centerPosition = Enumerable.Range (0, 24).ToArray ();
 		}
 
 		public int[] CornerPosition {
@@ -38,12 +39,33 @@ namespace RevengeSolver
 			get{ return _edgePosition; }
 		}
 
+		public int[] PairPosition {
+			get { 
+				int[] retArray = new int[_edgePosition.Length / 2];
+				int[] pairs = Edge.getPairs ();
+				for (int i = 0; i < _edgePosition.Length; i++) {
+					retArray [pairs [i]] = pairs [_edgePosition [i]];
+				}
+				return retArray;
+			}
+		}
+
+		public LinkedList<Twist> Twists {
+			get{ return twists; }
+		}
+
+		public void twist(LinkedList<Twist> twists){
+			foreach (Twist twist in twists) {
+				this.twist (twist);
+			}
+		}
+
 		public void twist (Twist twist)
 		{
 			_cornerPosition = twist.apply (_cornerPosition, Type.Corners);
 			_cornerOrientation = twist.apply (_cornerOrientation, Type.Corners, orientation: true);
 			_edgePosition = twist.apply (_edgePosition, Type.Edges);
-			_centerPosition = twist.apply (_cornerOrientation, Type.Centers);
+			_centerPosition = twist.apply (_centerPosition, Type.Centers);
 			twists.AddLast (twist);
 		}
 

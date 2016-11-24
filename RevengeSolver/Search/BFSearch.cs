@@ -31,7 +31,7 @@ namespace RevengeSolver
 			
 		private Queue<INode> nodeQueue = new Queue<INode> ();
 		private HashSet<T> nodeSet = new HashSet<T> ();
-		private INode _goalID;
+		private T _goalID;
 		private Object _lock = new Object ();
 		private readonly M[] moves;
 
@@ -40,7 +40,7 @@ namespace RevengeSolver
 			this.moves = moves;
 		}
 
-		public INode goalID {
+		public T goalID {
 			set { _goalID = value; } 
 		}
 
