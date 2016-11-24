@@ -37,7 +37,7 @@ namespace RevengeSolver
 				}
 				//  The goal-configuration also needs to have the correct edges placed in the middle layer
 				for(int i = 0; i<12; i++){
-					int edge = _edgePosition[i];
+					int edge = _pairPosition[i];
 					retValue += ((edge/8) << index);
 					index += 1;
 				}
@@ -56,7 +56,7 @@ namespace RevengeSolver
 
 			public BFSearch<long , Twist>.INode copyAndMove (Twist move)
 			{
-				Node retObject = new Node (move.apply (_cornerPosition, Type.Corners),
+				Node retObject = new Node (move.apply (_cornerOrientation, Type.Corners,orientation: true),
 					                 move.apply (_pairPosition, Type.EdgePairs), move);
 				retObject.predecessor = this;
 				return retObject;

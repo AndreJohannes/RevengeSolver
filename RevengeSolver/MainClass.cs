@@ -6,6 +6,7 @@ using System.Linq;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace RevengeSolver
 {
@@ -22,34 +23,22 @@ namespace RevengeSolver
 			int[] edges = Enumerable.Range(0, 24).ToArray();
 			int[] corners = Enumerable.Range (0, 8).ToArray ();
 			int[] orientations = new int[8];
-			//cube.setColors (Twist.R_.apply(edges, Type.Edges), 
-			//	Twist.R_.apply(corners, Type.Corners),
-			//	Twist.R_.apply(orientations, Type.Corners, orientation:true));
 		
-			CubeCanvas a = new CubeCanvas ();
-			a.Colors = cube.colors; 
+			CubeCanvas cubeCanvas = new CubeCanvas ();
+			cubeCanvas.Colors = cube.colors; 
 
 			Box box = new HBox (true, 0);
-			box.Add ((DrawingArea)a);
+			box.Add ((DrawingArea)cubeCanvas);
 			w.Add (box);
 			w.Resize (40 * 4 * 4, 40 * 4 * 3);
 			//w.DeleteEvent += close_window;
 			w.ShowAll ();
-			//Console.WriteLine (String.Format("Is equal: {0}" ,new MainClass ().compare (Twist.L)));
-			Cube c = new Cube();
-			Console.WriteLine (" ");
-			(new Phase7 ()).scramble (c,30);
-			foreach(Twist twist in c.Twists){
-				Console.WriteLine (twist.Name);
-			}
-			Console.WriteLine (" ");
-			cube.setColors (c);
-			LinkedList<Twist> twists = (new Phase7 ()).search (c);
-			c.twist (twists);
-			cube.setColors (c);
-			twists = (new Phase8 ()).search (c);
-			c.twist (twists);
-			cube.setColors (c);
+
+			MainClass solver = new MainClass (cubeCanvas);
+
+			Thread solverThread = new Thread(new ThreadStart(solver.solveCube ));
+			solverThread.Start();
+
 			Application.Run ();
 		}
 
@@ -60,6 +49,15 @@ namespace RevengeSolver
 			JObject o1 = JObject.Parse(File.ReadAllText(@"/home/andre/WorkProjects/rubiksrevengesolver/Output.json"));
 			return o1;
 
+		}
+
+		private ColorCube colorCube;
+		private CubeCanvas cubeCanvas;
+
+		public MainClass(CubeCanvas canvas){
+			colorCube = new ColorCube ();
+			canvas.Colors = colorCube.colors;
+			cubeCanvas = canvas;
 		}
 
 		private Boolean compare(Twist twist){
@@ -82,6 +80,31 @@ namespace RevengeSolver
 			return Enumerable.SequenceEqual(edgeList, edgeReference) && 
 				Enumerable.SequenceEqual(cornerList, cornerReference) &&
 				Enumerable.SequenceEqual(centerList, centerReference);
+		}
+
+		private void solveCube(){
+			LinkedList<IPhase> phases = new LinkedList<IPhase> ();
+			phases.AddLast (new Phase8 ());
+			phases.AddLast (new Phase7 ());
+			phases.AddLast (new Phase6 ());
+
+			Cube cube = new Cube ();
+
+
+			foreach (IPhase phase in phases) {
+				phase.scramble (cube, 10);
+			}
+
+			colorCube.setColors (cube);
+
+			foreach(IPhase phase in phases.Reverse()){
+				LinkedList<Twist> twists = phase.search (cube);
+				cube.twist (twists);
+				Console.Write ("next");
+				colorCube.setColors (cube);
+				cubeCanvas.QueueDraw();
+			}
+
 		}
 
 	}

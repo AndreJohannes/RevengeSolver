@@ -150,7 +150,7 @@ namespace RevengeSolver
 			}
 			if (orientation) {
 				for (int i = 0; i < retArray.Length; i++) {
-					retArray [i] = (retArray [i] + cornerOrientation [i]) % 3;
+					retArray [i] = mod(retArray [i] + cornerOrientation [i],3);
 				}
 			}
 			return retArray;
@@ -186,6 +186,11 @@ namespace RevengeSolver
 			if (corner.face3 == face)
 				return 2;
 			throw new System.ArgumentException ("The face passed is not valid");
+		}
+
+		private int mod (int k, int n)
+		{
+			return ((k %= n) < 0) ? k + n : k;
 		}
 
 	}
