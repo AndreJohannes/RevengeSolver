@@ -47,6 +47,8 @@
     <Compile Include="Phases\Phase6.cs" />
     <Compile Include="Phases\Phase5.cs" />
     <Compile Include="ColorCube.cs" />
+    <Compile Include="Phases\Phase4.cs" />
+    <Compile Include="Phases\Phase1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="gtk-sharp">

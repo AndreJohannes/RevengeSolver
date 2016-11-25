@@ -17,9 +17,12 @@ namespace RevengeSolver
 		int[,] cornerLocations = { { 0, 16, 67 },  { 15, 48, 35 }, { 3,  64, 51 }, { 12,  32, 19 },
 			{ 80, 31, 44 }, { 95, 63, 76 }, { 83, 47, 60 }, { 92, 79, 28 }
 		};
-		int[] centerLocations = {5,  6,  9,  10, 53, 54, 57, 58,
-			37, 38, 41, 42, 85, 86, 89, 90,
-			21, 22, 25, 26,	69, 70, 73, 74
+		int[] centerLocations = { 53, 54, 57, 58,
+			21, 22, 25, 26,
+			5,  6,  9,  10,
+			85, 86, 89, 90,
+			37, 38, 41, 42,
+			69, 70, 73, 74
 		};
 
 		public ColorCube ()
@@ -36,10 +39,10 @@ namespace RevengeSolver
 		}
 
 		public void setColors(Cube cube){
-			setColors (cube.EdgePosition, cube.CornerPosition, cube.CornerOrientation);
+			setColors (cube.EdgePosition, cube.CornerPosition, cube.CornerOrientation, cube.CenterPosition);
 		}
 
-		public void setColors (int[] edges, int[] corners, int[] orientations)
+		public void setColors (int[] edges, int[] corners, int[] orientations, int[] centers)
 		{
 			
 			for (int i = 0; i < _colors.Length; i++) {
@@ -55,8 +58,8 @@ namespace RevengeSolver
 				_colors [cornerLocations [i, mod (1 + offset, 3)]] = colorDictionary [Corner.order [corners [i]].face2];
 				_colors [cornerLocations [i, mod (2 + offset, 3)]] = colorDictionary [Corner.order [corners [i]].face3];
 			}
-			for (int i = 0; i < 12; i++) {
-				
+			for (int i = 0; i < 24; i++) {
+				_colors[centerLocations[i]] = colorDictionary[(Faces)centers[i]];
 			}
 
 		}

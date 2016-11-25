@@ -1,10 +1,17 @@
 ﻿using System;
 
-namespace RevengeSolver {
+namespace RevengeSolver
+{
 
-	public enum Faces {
+	public enum Faces
+	{
 
-		U, D, L, R, F, B 
+		R = 0,
+		L = 1,
+		U = 2,
+		D = 3,
+		F = 4,
+		B = 5
 
 	}
 }

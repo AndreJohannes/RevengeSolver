@@ -18,37 +18,37 @@ namespace RevengeSolver
 			{ Edge.FU, Edge.RU, Edge.BU, Edge.LU }
 		},
 			                        new Corner[]{ Corner.ULF, Corner.URF, Corner.URB, Corner.ULB },
-			                        new Center[]{ Center.U3, Center.U4, Center.U2, Center.U1 }
+			                        new Center[,]{ { Center.U3, Center.U4, Center.U2, Center.U1 } }
 		                        );
 		public static Twist D = new Twist ("D", new Edge[,] { { Edge.DL, Edge.DB, Edge.DR, Edge.DF },
 			{ Edge.LD, Edge.BD, Edge.RD, Edge.FD }
 		},
 			                        new Corner[]{ Corner.DRF, Corner.DLF, Corner.DLB, Corner.DRB },
-			                        new Center[]{ Center.D3, Center.D4, Center.D2, Center.D1 }
+			                        new Center[,]{ { Center.D3, Center.D4, Center.D2, Center.D1 } }
 		                        );
 		public static Twist F = new Twist ("F", new Edge[,] {{ Edge.FL, Edge.FD, Edge.FR, Edge.FU },
 			{ Edge.LF, Edge.DF, Edge.RF, Edge.UF }
 		},
 			                        new Corner[]{ Corner.DLF, Corner.DRF, Corner.URF, Corner.ULF },
-			                        new Center[]{ Center.F3, Center.F4, Center.F2, Center.F1 }
+			                        new Center[,]{ { Center.F3, Center.F4, Center.F2, Center.F1 } }
 		                        );
 		public static Twist B = new Twist ("B", new Edge[,] {{ Edge.BU, Edge.BR, Edge.BD, Edge.BL },
 			{ Edge.UB, Edge.RB, Edge.DB, Edge.LB }
 		},
 			                        new Corner[]{ Corner.ULB, Corner.URB, Corner.DRB, Corner.DLB },
-			                        new Center[]{ Center.B3, Center.B4, Center.B2, Center.B1 }
+			                        new Center[,]{ { Center.B3, Center.B4, Center.B2, Center.B1 } }
 		                        );
 		public static Twist R = new Twist ("R", new Edge[,] {{ Edge.RF, Edge.RD, Edge.RB, Edge.RU },
 			{ Edge.FR, Edge.DR, Edge.BR, Edge.UR }
 		},
 			                        new Corner[]{ Corner.DRF, Corner.DRB, Corner.URB, Corner.URF },
-			                        new Center[]{ Center.R3, Center.R4, Center.R2, Center.R1 }
+			                        new Center[,]{ { Center.R3, Center.R4, Center.R2, Center.R1 } }
 		                        );
 		public static Twist L = new Twist ("L", new Edge[,] {{ Edge.LU, Edge.LB, Edge.LD, Edge.LF, },
 			{ Edge.UL, Edge.BL, Edge.DL, Edge.FL }
 		},
 			                        new Corner[]{ Corner.ULF, Corner.ULB, Corner.DLB, Corner.DLF },
-			                        new Center[]{ Center.L3, Center.L4, Center.L2, Center.L1 }
+			                        new Center[,]{ { Center.L3, Center.L4, Center.L2, Center.L1 } }
 		                        );
 
 		public static Twist U2 = new Twist ("U2", U, 2);
@@ -64,6 +64,32 @@ namespace RevengeSolver
 		public static Twist L2 = new Twist ("L2", L, 2);
 		public static Twist L_ = new Twist ("L'", L, 3);
 
+		public static Twist u = new Twist ("u", new Edge[,]{ { Edge.LF, Edge.FR, Edge.RB, Edge.BL } },
+			                       new Corner[]{ }, new Center[,]{ { Center.F1, Center.R1, Center.B1, Center.L1 }, { Center.F2, Center.R2, Center.B2, Center.L2 } });
+		public static Twist d = new Twist ("d", new Edge[,]{ { Edge.LB, Edge.BR, Edge.RF, Edge.FL } },
+			                       new Corner[]{ }, new Center[,]{ { Center.L3, Center.B3, Center.R3, Center.F3 }, { Center.L4, Center.B4, Center.R4, Center.F4 } });
+		public static Twist f = new Twist ("f", new Edge[,]{ { Edge.UL, Edge.LD, Edge.DR, Edge.RU } },
+			new Corner[]{ }, new Center[,]{ { Center.U3, Center.L4, Center.D2, Center.R1 }, { Center.U4, Center.L2, Center.D1, Center.R3 } });
+		public static Twist b = new Twist ("b", new Edge[,]{ {  Edge.UR, Edge.RD, Edge.DL, Edge.LU  } },
+			new Corner[]{ }, new Center[,]{ { Center.L1, Center.U2, Center.R4, Center.D3 }, { Center.L3, Center.U1, Center.R2, Center.D4 } });
+		public static Twist r = new Twist ("r", new Edge[,]{ { Edge.UF, Edge.FD, Edge.DB, Edge.BU } },
+			new Corner[]{ }, new Center[,]{ { Center.U2, Center.F2, Center.D2, Center.B3 }, { Center.U4, Center.F4, Center.D4, Center.B1 } });
+		public static Twist l = new Twist ("l", new Edge[,]{ { Edge.UB, Edge.BD, Edge.DF, Edge.FU } },
+			new Corner[]{ }, new Center[,]{ { Center.U1, Center.B4, Center.D1, Center.F1 }, { Center.U3, Center.B2, Center.D3, Center.F3 } });
+
+		public static Twist u2 = new Twist ("u2", u, 2);
+		public static Twist u_ = new Twist ("u'", u, 3);
+		public static Twist d2 = new Twist ("d2", d, 2);
+		public static Twist d_ = new Twist ("d'", d, 3);
+		public static Twist f2 = new Twist ("f2", f, 2);
+		public static Twist f_ = new Twist ("f'", f, 3);
+		public static Twist b2 = new Twist ("b2", b, 2);
+		public static Twist b_ = new Twist ("b'", b, 3);
+		public static Twist r2 = new Twist ("r2", r, 2);
+		public static Twist r_ = new Twist ("r'", r, 3);
+		public static Twist l2 = new Twist ("l2", l, 2);
+		public static Twist l_ = new Twist ("l'", l, 3);
+
 		private readonly string _name;
 		private readonly int[] edgePermutation;
 		private readonly int[] pairPermutation;
@@ -71,8 +97,9 @@ namespace RevengeSolver
 		private readonly int[] centerPermutation;
 		private readonly int[] cornerOrientation;
 		private readonly int[] pairOrientation;
+		private Twist inverse;
 
-		private Twist (string name, Edge[,] edgeCycles, Corner[] cornerCycle, Center[] centerCycle)
+		private Twist (string name, Edge[,] edgeCycles, Corner[] cornerCycle, Center[,] centerCycles)
 		{
 
 			this._name = name;
@@ -104,17 +131,19 @@ namespace RevengeSolver
 				cornerOrientation [index1] = (faceIdx1 - faceIdx2) % 3;
 			}
 			centerPermutation = Enumerable.Range (0, 24).ToArray ();
-			length = centerCycle.Length;
-			for (int j = 0; j < length; j++) {
-				int index1 = centerCycle [j].index;
-				int index2 = centerCycle [(j + 1) % length].index;
-				centerPermutation [index1] = index2;
+			length = centerCycles.GetLength (1);
+			for (int i = 0; i < centerCycles.GetLength (0); i++) {
+				for (int j = 0; j < length; j++) {
+					int index1 = centerCycles [i, j].index;
+					int index2 = centerCycles [i, (j + 1) % length].index;
+					centerPermutation [index1] = index2;
+				}
 			}
 
 			pairOrientation = new int[12];
 			int[] signs = Edge.getSigns ();
 			for (int i = 0; i < 24; i++) {
-				pairOrientation[pairs[edgePermutation[i]]] = signs[i] * signs[edgePermutation[i]] ==1 ? 0 : 1;
+				pairOrientation [pairs [edgePermutation [i]]] = signs [i] * signs [edgePermutation [i]] == 1 ? 0 : 1;
 			}
 
 		}
@@ -135,11 +164,27 @@ namespace RevengeSolver
 				cornerOrientation = twist.apply (cornerOrientation, Type.Corners, orientation: true);
 				pairPermutation = twist.apply (pairPermutation, Type.EdgePairs);
 				pairOrientation = twist.apply (pairOrientation, Type.EdgePairs, orientation: true);
-			}	
+			}
+			// Set the inverse elements
+			switch(num){
+			case 2:
+				this.inverse = this;
+				break;
+			case 3:
+				this.inverse = twist;
+				twist.inverse = this;
+				break;
+			default:
+				throw new SystemException ("Not supported");	
+			}
 		}
 
 		public string Name {
 			get{ return _name; }
+		}
+
+		public Twist Inverse {
+			get{ return inverse; }
 		}
 
 		/// <summary>
@@ -161,7 +206,7 @@ namespace RevengeSolver
 			if (orientation) {
 				int[] orientations = type == Type.Corners ? cornerOrientation : pairOrientation;
 				for (int i = 0; i < retArray.Length; i++) {
-					retArray [i] = mod(retArray [i] + orientations [i],  24 / retArray.Length);
+					retArray [i] = mod (retArray [i] + orientations [i], 24 / retArray.Length);
 				}
 			}
 			return retArray;

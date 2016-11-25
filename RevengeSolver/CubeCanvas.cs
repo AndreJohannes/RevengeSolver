@@ -64,6 +64,9 @@ namespace RevengeSolver
 					g.Rectangle (rectangle);
 					g.Color = _colors[idx++];
 					g.Fill ();
+					g.Rectangle (rectangle);
+					g.Color = new Color(0,0,0,1);
+					g.Stroke ();
 				}
 
 			}

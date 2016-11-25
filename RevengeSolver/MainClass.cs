@@ -39,6 +39,8 @@ namespace RevengeSolver
 			Thread solverThread = new Thread (new ThreadStart (solver.solveCube));
 			solverThread.Start ();
 
+			//solver.compare (Twist.l);
+
 			Application.Run ();
 		}
 
@@ -46,10 +48,8 @@ namespace RevengeSolver
 
 		static JObject ReadJson ()
 		{
-
 			JObject o1 = JObject.Parse (File.ReadAllText (@"/home/andre/WorkProjects/rubiksrevengesolver/Output.json"));
 			return o1;
-
 		}
 
 		private ColorCube colorCube;
@@ -64,7 +64,6 @@ namespace RevengeSolver
 
 		private Boolean compare (Twist twist)
 		{
-
 			int[] edgeList = twist.apply (Enumerable.Range (0, 24).ToArray (), Type.Edges);
 			int[] edgeReference = jObject [twist.Name] ["Edges"].Select (jv => (int)jv).ToArray ();
 			Console.WriteLine (string.Join (",", edgeList));
@@ -87,11 +86,13 @@ namespace RevengeSolver
 
 		private void solveCube ()
 		{
+
 			LinkedList<IPhase> phases = new LinkedList<IPhase> ();
-			phases.AddLast (new Phase8 ());
-			phases.AddLast (new Phase7 ());
-			phases.AddLast (new Phase6 ());
-			phases.AddLast (new Phase5 ());
+			//phases.AddLast (new Phase8 ());
+			//phases.AddLast (new Phase7 ());
+			//phases.AddLast (new Phase6 ());
+			//phases.AddLast (new Phase5 ());
+			phases.AddLast (new Phase4());
 
 			Cube cube = new Cube ();
 
@@ -99,21 +100,16 @@ namespace RevengeSolver
 				phase.scramble (cube, 10);
 			}
 
-
-
 			colorCube.setColors (cube);
 
 			foreach (IPhase phase in phases.Reverse()) {
-				Console.WriteLine (String.Join(",",cube.PairOrientation));
 				LinkedList<Twist> twists = phase.search (cube);
 				cube.twist (twists);
-				Console.WriteLine ("next");
 				colorCube.setColors (cube);
 				cubeCanvas.QueueDraw ();
+				Console.WriteLine ("Solved");
 			}
-
 		}
-
 	}
 
 }

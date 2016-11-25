@@ -7,20 +7,51 @@ namespace RevengeSolver
 	public class Cube
 	{
 
+		private class oCube: Cube
+		{
+			public LinkedList<Twist> Twists {
+				get{ throw new MissingMethodException ("Method for oCube not supported"); }
+			}
+
+			public void twist (LinkedList<Twist> twists)
+			{ 
+				throw new MissingMethodException ("Method for oCube not supported");
+			}
+
+			public void twist (Twist twist)
+			{
+				throw new MissingMethodException ("Method for oCube not supported");
+			}
+		}
+
+
 		private int[] _cornerPosition;
 		private int[] _edgePosition;
 		private int[] _centerPosition;
 		private int[] _cornerOrientation;
 
-		private LinkedList<Twist> twists;
+		private LinkedList<Twist> _twists;
+
+		public static Cube OriginalCube = new oCube ();
 
 		public Cube ()
 		{
-			twists = new LinkedList<Twist> ();
+			_twists = new LinkedList<Twist> ();
 			_cornerPosition = Enumerable.Range (0, 8).ToArray ();
 			_cornerOrientation = new int[8];
 			_edgePosition = Enumerable.Range (0, 24).ToArray ();
-			_centerPosition = Enumerable.Range (0, 24).ToArray ();
+			_centerPosition = (from c in Center.order
+			                   select (int)c.face).ToArray (); 
+		}
+
+		private Cube(int[] cornerPosition, int[] cornerOrientation,
+			int[] edgePosition, int[] centerPosition, LinkedList<Twist> twists){
+			_twists = twists;
+			_cornerPosition = cornerPosition;
+			_cornerOrientation = cornerOrientation;
+			_edgePosition = edgePosition;
+			_centerPosition = centerPosition; 
+
 		}
 
 		public int[] CornerPosition {
@@ -39,6 +70,17 @@ namespace RevengeSolver
 			get{ return _edgePosition; }
 		}
 
+
+
+		public Cube Clone(Boolean cloneTwists = true){
+			return new Cube ((int[])_cornerPosition.Clone(), 
+				(int[])_cornerOrientation.Clone(),
+				(int[])_edgePosition.Clone(),
+				(int[])_centerPosition.Clone(),
+				cloneTwists ? new LinkedList<Twist>(_twists) : new LinkedList<Twist>()
+			);
+		}
+
 		public int[] PairPosition {
 			get { 
 				int[] retArray = new int[_edgePosition.Length / 2];
@@ -51,22 +93,23 @@ namespace RevengeSolver
 		}
 
 		public int[] PairOrientation {
-			get{ 
+			get { 
 				int[] retArray = new int[_edgePosition.Length / 2];
 				int[] pairs = Edge.getPairs ();
 				int[] signs = Edge.getSigns ();
 				for (int i = 0; i < 24; i++) {
-					retArray[pairs[i]] = signs[i] * signs[_edgePosition[i]] ==1 ? 0 : 1;
+					retArray [pairs [i]] = signs [i] * signs [_edgePosition [i]] == 1 ? 0 : 1;
 				}
 				return retArray;
 			}
 		}
 
 		public LinkedList<Twist> Twists {
-			get{ return twists; }
+			get{ return _twists; }
 		}
 
-		public void twist(LinkedList<Twist> twists){
+		public void twist (LinkedList<Twist> twists)
+		{ 
 			foreach (Twist twist in twists) {
 				this.twist (twist);
 			}
@@ -78,7 +121,7 @@ namespace RevengeSolver
 			_cornerOrientation = twist.apply (_cornerOrientation, Type.Corners, orientation: true);
 			_edgePosition = twist.apply (_edgePosition, Type.Edges);
 			_centerPosition = twist.apply (_centerPosition, Type.Centers);
-			twists.AddLast (twist);
+			_twists.AddLast (twist);
 		}
 
 	}
