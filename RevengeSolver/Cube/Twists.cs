@@ -12,44 +12,17 @@ namespace RevengeSolver
 		Centers
 	}
 
+	/// <summary>
+	/// A class that represents all twists of rubik's revenge cube.  
+	/// </summary>
 	public class Twist
 	{
-		public static Twist U = new Twist ("U", new Edge[,] { { Edge.UF, Edge.UR, Edge.UB, Edge.UL },
-			{ Edge.FU, Edge.RU, Edge.BU, Edge.LU }
-		},
-			                        new Corner[]{ Corner.ULF, Corner.URF, Corner.URB, Corner.ULB },
-			                        new Center[,]{ { Center.U3, Center.U4, Center.U2, Center.U1 } }
-		                        );
-		public static Twist D = new Twist ("D", new Edge[,] { { Edge.DL, Edge.DB, Edge.DR, Edge.DF },
-			{ Edge.LD, Edge.BD, Edge.RD, Edge.FD }
-		},
-			                        new Corner[]{ Corner.DRF, Corner.DLF, Corner.DLB, Corner.DRB },
-			                        new Center[,]{ { Center.D3, Center.D4, Center.D2, Center.D1 } }
-		                        );
-		public static Twist F = new Twist ("F", new Edge[,] {{ Edge.FL, Edge.FD, Edge.FR, Edge.FU },
-			{ Edge.LF, Edge.DF, Edge.RF, Edge.UF }
-		},
-			                        new Corner[]{ Corner.DLF, Corner.DRF, Corner.URF, Corner.ULF },
-			                        new Center[,]{ { Center.F3, Center.F4, Center.F2, Center.F1 } }
-		                        );
-		public static Twist B = new Twist ("B", new Edge[,] {{ Edge.BU, Edge.BR, Edge.BD, Edge.BL },
-			{ Edge.UB, Edge.RB, Edge.DB, Edge.LB }
-		},
-			                        new Corner[]{ Corner.ULB, Corner.URB, Corner.DRB, Corner.DLB },
-			                        new Center[,]{ { Center.B3, Center.B4, Center.B2, Center.B1 } }
-		                        );
-		public static Twist R = new Twist ("R", new Edge[,] {{ Edge.RF, Edge.RD, Edge.RB, Edge.RU },
-			{ Edge.FR, Edge.DR, Edge.BR, Edge.UR }
-		},
-			                        new Corner[]{ Corner.DRF, Corner.DRB, Corner.URB, Corner.URF },
-			                        new Center[,]{ { Center.R3, Center.R4, Center.R2, Center.R1 } }
-		                        );
-		public static Twist L = new Twist ("L", new Edge[,] {{ Edge.LU, Edge.LB, Edge.LD, Edge.LF, },
-			{ Edge.UL, Edge.BL, Edge.DL, Edge.FL }
-		},
-			                        new Corner[]{ Corner.ULF, Corner.ULB, Corner.DLB, Corner.DLF },
-			                        new Center[,]{ { Center.L3, Center.L4, Center.L2, Center.L1 } }
-		                        );
+		public static Twist U = new Twist ("U", new Edge[,] { { Edge.UF, Edge.UR, Edge.UB, Edge.UL },{ Edge.FU, Edge.RU, Edge.BU, Edge.LU }},new Corner[]{ Corner.ULF, Corner.URF, Corner.URB, Corner.ULB },new Center[,]{ { Center.U3, Center.U4, Center.U2, Center.U1 } });
+		public static Twist D = new Twist ("D", new Edge[,] { { Edge.DL, Edge.DB, Edge.DR, Edge.DF },{ Edge.LD, Edge.BD, Edge.RD, Edge.FD }},new Corner[]{ Corner.DRF, Corner.DLF, Corner.DLB, Corner.DRB },new Center[,]{ { Center.D3, Center.D4, Center.D2, Center.D1 } });
+		public static Twist F = new Twist ("F", new Edge[,] {{ Edge.FL, Edge.FD, Edge.FR, Edge.FU },{ Edge.LF, Edge.DF, Edge.RF, Edge.UF }}, new Corner[]{ Corner.DLF, Corner.DRF, Corner.URF, Corner.ULF }, new Center[,]{ { Center.F3, Center.F4, Center.F2, Center.F1 }} );
+		public static Twist B = new Twist ("B", new Edge[,] {{ Edge.BU, Edge.BR, Edge.BD, Edge.BL },{ Edge.UB, Edge.RB, Edge.DB, Edge.LB }}, new Corner[]{ Corner.ULB, Corner.URB, Corner.DRB, Corner.DLB }, new Center[,]{ { Center.B3, Center.B4, Center.B2, Center.B1 } } );
+		public static Twist R = new Twist ("R", new Edge[,] {{ Edge.RF, Edge.RD, Edge.RB, Edge.RU },{ Edge.FR, Edge.DR, Edge.BR, Edge.UR }}, new Corner[]{ Corner.DRF, Corner.DRB, Corner.URB, Corner.URF }, new Center[,]{ { Center.R3, Center.R4, Center.R2, Center.R1 } } );
+		public static Twist L = new Twist ("L", new Edge[,] {{ Edge.LU, Edge.LB, Edge.LD, Edge.LF, }, { Edge.UL, Edge.BL, Edge.DL, Edge.FL }}, new Corner[]{ Corner.ULF, Corner.ULB, Corner.DLB, Corner.DLF }, new Center[,]{ { Center.L3, Center.L4, Center.L2, Center.L1 } } );
 
 		public static Twist U2 = new Twist ("U2", U, 2);
 		public static Twist U_ = new Twist ("U'", U, 3);
@@ -64,66 +37,12 @@ namespace RevengeSolver
 		public static Twist L2 = new Twist ("L2", L, 2);
 		public static Twist L_ = new Twist ("L'", L, 3);
 
-		public static Twist u = new Twist ("u", new Edge[,]{ { Edge.LF, Edge.FR, Edge.RB, Edge.BL } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.F1, Center.R1, Center.B1, Center.L1 },
-			{
-				Center.F2,
-				Center.R2,
-				Center.B2,
-				Center.L2
-			}
-		});
-		public static Twist d = new Twist ("d", new Edge[,]{ { Edge.LB, Edge.BR, Edge.RF, Edge.FL } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.L3, Center.B3, Center.R3, Center.F3 },
-			{
-				Center.L4,
-				Center.B4,
-				Center.R4,
-				Center.F4
-			}
-		});
-		public static Twist f = new Twist ("f", new Edge[,]{ { Edge.UL, Edge.LD, Edge.DR, Edge.RU } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.U3, Center.L4, Center.D2, Center.R1 },
-			{
-				Center.U4,
-				Center.L2,
-				Center.D1,
-				Center.R3
-			}
-		});
-		public static Twist b = new Twist ("b", new Edge[,]{ { Edge.UR, Edge.RD, Edge.DL, Edge.LU  } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.L1, Center.U2, Center.R4, Center.D3 },
-			{
-				Center.L3,
-				Center.U1,
-				Center.R2,
-				Center.D4
-			}
-		});
-		public static Twist r = new Twist ("r", new Edge[,]{ { Edge.UF, Edge.FD, Edge.DB, Edge.BU } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.U2, Center.F2, Center.D2, Center.B3 },
-			{
-				Center.U4,
-				Center.F4,
-				Center.D4,
-				Center.B1
-			}
-		});
-		public static Twist l = new Twist ("l", new Edge[,]{ { Edge.UB, Edge.BD, Edge.DF, Edge.FU } },
-			                        new Corner[]{ }, new Center[,] {
-			{ Center.U1, Center.B4, Center.D1, Center.F1 },
-			{
-				Center.U3,
-				Center.B2,
-				Center.D3,
-				Center.F3
-			}
-		});
+		public static Twist u = new Twist (name: "u", edgeCycles: new Edge[,]{ { Edge.LF, Edge.FR, Edge.RB, Edge.BL } },cornerCycle: new Corner[]{ }, centerCycles: new Center[,] {{ Center.F1, Center.R1, Center.B1, Center.L1 }, {Center.F2,Center.R2, Center.B2,Center.L2}});
+		public static Twist d = new Twist (name: "d", edgeCycles: new Edge[,]{ { Edge.LB, Edge.BR, Edge.RF, Edge.FL } },cornerCycle: new Corner[]{ }, centerCycles: new Center[,] {{ Center.L3, Center.B3, Center.R3, Center.F3 }, {Center.L4,Center.B4,Center.R4,Center.F4}});
+		public static Twist f = new Twist ("f", new Edge[,]{ { Edge.UL, Edge.LD, Edge.DR, Edge.RU } },new Corner[]{ }, new Center[,] {{ Center.U3, Center.L4, Center.D2, Center.R1 }, {Center.U4,Center.L2,Center.D1,Center.R3}});
+		public static Twist b = new Twist ("b", new Edge[,]{ { Edge.UR, Edge.RD, Edge.DL, Edge.LU  } },new Corner[]{ }, new Center[,] {{ Center.L1, Center.U2, Center.R4, Center.D3 }, {Center.L3,Center.U1,Center.R2,Center.D4}});
+		public static Twist r = new Twist ("r", new Edge[,]{ { Edge.UF, Edge.FD, Edge.DB, Edge.BU } },new Corner[]{ }, new Center[,] {{ Center.U2, Center.F2, Center.D2, Center.B3 }, {Center.U4,Center.F4,Center.D4,Center.B1}});
+		public static Twist l = new Twist ("l", new Edge[,]{ { Edge.UB, Edge.BD, Edge.DF, Edge.FU } },new Corner[]{ }, new Center[,] {{ Center.U1, Center.B4, Center.D1, Center.F1 }, {Center.U3,Center.B2,Center.D3,Center.F3}});
 
 		public static Twist u2 = new Twist ("u2", u, 2);
 		public static Twist u_ = new Twist ("u'", u, 3);

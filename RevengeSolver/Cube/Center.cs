@@ -2,6 +2,10 @@
 
 namespace RevengeSolver
 {
+
+	/// <summary>
+	/// A class representing all center pieces. 
+	/// </summary>
 	public class Center
 	{
 
@@ -9,27 +13,22 @@ namespace RevengeSolver
 		public static Center U2 = new Center (Faces.U);
 		public static Center U3 = new Center (Faces.U);
 		public static Center U4 = new Center (Faces.U);
-
 		public static Center R1 = new Center (Faces.R);
 		public static Center R2 = new Center (Faces.R);
 		public static Center R3 = new Center (Faces.R);
 		public static Center R4 = new Center (Faces.R);
-
 		public static Center F1 = new Center (Faces.F);
 		public static Center F2 = new Center (Faces.F);
 		public static Center F3 = new Center (Faces.F);
 		public static Center F4 = new Center (Faces.F);
-
 		public static Center D1 = new Center (Faces.D);
 		public static Center D2 = new Center (Faces.D);
 		public static Center D3 = new Center (Faces.D);
 		public static Center D4 = new Center (Faces.D);
-
 		public static Center L1 = new Center (Faces.L);
 		public static Center L2 = new Center (Faces.L);
 		public static Center L3 = new Center (Faces.L);
 		public static Center L4 = new Center (Faces.L);
-
 		public static Center B1 = new Center (Faces.B);
 		public static Center B2 = new Center (Faces.B);
 		public static Center B3 = new Center (Faces.B);

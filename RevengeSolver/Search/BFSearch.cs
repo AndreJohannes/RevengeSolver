@@ -14,8 +14,10 @@ using System.Collections;
 
 namespace RevengeSolver
 {
-	
-	public class BFSearch<T,M>// N is a generic retirn type;only needed because we want to use BFSeach and IDAStar in one phase
+	/// <summary>
+	/// Implementation of the Breadth-first search algorithm
+	/// </summary>
+	public class BFSearch<T,M>
 	{
 
 		public interface INode

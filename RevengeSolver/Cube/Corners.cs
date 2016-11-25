@@ -2,7 +2,10 @@
 using RevengeSolver;
 
 namespace RevengeSolver {
-	
+
+	/// <summary>
+	/// A class representing all corner pieces. 
+	/// </summary>
 	public class Corner {
 
 		public static Corner ULB = new Corner (Faces.U, Faces.L, Faces.B);

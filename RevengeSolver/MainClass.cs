@@ -93,7 +93,7 @@ namespace RevengeSolver
 			phases.AddLast (new Phase6 ());
 			phases.AddLast (new Phase5 ());
 			phases.AddLast (new Phase4 ());
-			//phases.AddLast (new Phase3 ());
+			phases.AddLast (new Phase3 ());
 			//phases.AddLast (new Phase2 ());
 			//phases.AddLast (new Phase1 ());
 
@@ -105,12 +105,13 @@ namespace RevengeSolver
 
 			colorCube.setColors (cube);
 
+			int ph = 1;
 			foreach (IPhase phase in phases.Reverse()) {
 				LinkedList<Twist> twists = phase.search (cube);
 				cube.twist (twists);
 				colorCube.setColors (cube);
 				cubeCanvas.QueueDraw ();
-				Console.WriteLine ("Solved");
+				Console.WriteLine ("Solved Phase {0}",ph++);
 			}
 		}
 	}

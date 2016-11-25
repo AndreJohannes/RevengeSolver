@@ -3,7 +3,13 @@ using System.Collections.Generic;
 
 namespace RevengeSolver
 {
-	
+	/// <summary>
+	/// A class that represents all edge pieces. An edge piece is labeled by 
+	/// by its corresponding faces. Eg. edge UB is the edge at the interface
+	/// of face U and B. The edge pairs UB and BU are such, that UB is to the 
+	/// left and BU is the right edge when looking in direction U -> B  
+	/// 
+	/// </summary>
 	public class Edge
 	{
 

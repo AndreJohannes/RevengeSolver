@@ -6,7 +6,9 @@ namespace RevengeSolver
 
 	public class IDAStar<M>
 	{
-
+		/// <summary>
+		/// Implementation of the IDA* algorithm
+		/// </summary>
 		public interface INode{
 
 			float getDistance();
