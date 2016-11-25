@@ -29,7 +29,7 @@ namespace RevengeSolver
 			{
 				long retValue = 0;
 				int index = 0;
-				int parity = getParity (_pairPosition);
+				int parity = Twist.getParity (_pairPosition);
 				// The goal configuration should have the edges placed in the correct layer
 				foreach (int edge  in _pairPosition) {
 					retValue += ((edge / 4) << index);
@@ -62,16 +62,7 @@ namespace RevengeSolver
 				return retObject;
 			}
 
-			private int getParity (int[] array)
-			{
-				int count = 0;
-				for (int i = 0; i < array.Length; i++) {
-					for (int j = i + 1; j < array.Length; j++) {
-						count += (array [j] < array [i]) ? 1 : 0;
-					}
-				}
-				return  count % 2;
-			}
+
 
 		}
 

@@ -24,6 +24,8 @@ namespace RevengeSolver
 				int stage, Twist move)
 			{
 				_centerPosition = centerPosition;
+				_edgePosition = edgePosition;
+				_edgeOrientation = edgeOrientation;
 				_move = move;
 				_stage = stage;
 			}
@@ -36,7 +38,7 @@ namespace RevengeSolver
 					retValue += ((center / 2 == 1 ? 1 : 0) << index);
 					index++;
 				}
-				retValue += Edges.getParity(_edgePosition) << index;
+				retValue += Twist.getParity(_edgePosition) << index;
 				return retValue;
 			}
 
@@ -47,7 +49,7 @@ namespace RevengeSolver
 				for (int i = 0; i < 8; i++) {
 					retValue += _centerPosition[i] / 2 == 0 ? 0 : 2;
 					retValue += _centerPosition[i + 16] / 2 == 2 ? 0 : 2;}
-				if (Edges.getParity(edgeConfiguration) != 0) retValue += 2;
+				if (Twist.getParity(_edgePosition) != 0) retValue += 2;
 				// Second stage: up and down faces must have equal scheme; this is not in the paper, but is essential
 				if (_stage > 1) {
 					for (int i = 0; i < 2; i++) {
@@ -64,12 +66,12 @@ namespace RevengeSolver
 					}
 					if (count / 2 % 2 != 0)
 						retValue += 2;
-					foreach (int parity in Edges.getPairParity(_edgePosition, _edgeOrientation)) {
-						if (parity != 1) {
-							retValue += 2;
-							break;
-						}
-					}
+					//foreach (int parity in Twist.getPairParity(_edgePosition, _edgeOrientation)) {
+					//	if (parity != 1) {
+					//		retValue += 2;
+					//		break;
+					//	}
+					//}
 				}
 				return retValue / 8f; 
 			}
@@ -134,6 +136,7 @@ namespace RevengeSolver
 			};
 
 			BFSearch = new BFSearch<int, Twist> (generators);
+			IDASearch = new IDAStar<Twist> (generators);
 		}
 
 		public LinkedList<Twist> search (Cube cube)

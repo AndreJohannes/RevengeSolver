@@ -93,7 +93,9 @@ namespace RevengeSolver
 			phases.AddLast (new Phase6 ());
 			phases.AddLast (new Phase5 ());
 			phases.AddLast (new Phase4 ());
-			phases.AddLast (new Phase3 ());
+			//phases.AddLast (new Phase3 ());
+			//phases.AddLast (new Phase2 ());
+			//phases.AddLast (new Phase1 ());
 
 			Cube cube = new Cube ();
 

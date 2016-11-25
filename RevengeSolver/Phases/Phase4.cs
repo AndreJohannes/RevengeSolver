@@ -42,8 +42,8 @@ namespace RevengeSolver
 					retValue += pairs[_edgePosition[3]] == pairs[_edgePosition[5]] ? 0 : 2;
 					retValue += pairs[_edgePosition[6]] == pairs[_edgePosition[7]] ? 0 : 1;
 					if (retValue == 0) {
-					//	retValue += Edges.getParity(cornerConfiguration) ==
-					//		Edges.getParity(getPairConfiguration(edgeConfiguration)) ? 0 : 1;
+						retValue += Twist.getParity(_cornerPosition) ==
+							Twist.getParity(getPairConfiguration(_edgePosition)) ? 0 : 1;
 					}
 				}
 				if (_stage > 2) {
@@ -70,8 +70,8 @@ namespace RevengeSolver
 				if (_stage > 7) {
 					retValue += _centerPosition[18] == _centerPosition[19] ? 0 : 2;
 					if (retValue == 0) {
-					//	retValue += Edges.getParity(cornerConfiguration) ==
-					//			Edges.getParity(getPairConfiguration(edgeConfiguration)) ? 0 : 1;
+						retValue += Twist.getParity(_cornerPosition) ==
+							Twist.getParity(getPairConfiguration(_edgePosition)) ? 0 : 1;
 					}
 				}
 				return retValue / 8f;
@@ -105,6 +105,16 @@ namespace RevengeSolver
 					 move);
 				retObject.predecessor = this;
 				return retObject;
+			}
+
+			private int[] getPairConfiguration(int[] edges) {
+				int[] retArray = new int[12];
+				int index = 0;
+				foreach (int edge in edges) {
+					retArray[pairs[index]] = pairs[edges[index]];
+					index++;
+				}
+				return retArray;
 			}
 
 		}
