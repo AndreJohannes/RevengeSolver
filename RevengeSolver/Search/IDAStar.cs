@@ -13,7 +13,7 @@ namespace RevengeSolver
 
 			LinkedList<M> getMoves();
 
-			INode copyAndMove(M move);
+			INode move(M move);
 
 			Boolean shouldAvoid(M move);
 		}
@@ -43,7 +43,7 @@ namespace RevengeSolver
 				foreach (M move in moves) {
 					if (node.shouldAvoid(move))
 						continue;
-					INode twistedNode =node.copyAndMove(move);
+					INode twistedNode =node.move(move);
 					INode goal = searchPhase(twistedNode, depth - 1);
 					if (goal != null) {
 						return goal;

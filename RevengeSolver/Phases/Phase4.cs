@@ -95,7 +95,7 @@ namespace RevengeSolver
 				return retList;
 			}
 
-			public IDAStar< Twist>.INode copyAndMove (Twist move)
+			public IDAStar< Twist>.INode move (Twist move)
 			{
 				Node retObject = new Node (
 					move.apply (_edgePosition, Type.Edges),

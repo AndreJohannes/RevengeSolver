@@ -15,7 +15,7 @@ using System.Collections;
 namespace RevengeSolver
 {
 	
-	public class BFSearch<T,M>
+	public class BFSearch<T,M>// N is a generic retirn type;only needed because we want to use BFSeach and IDAStar in one phase
 	{
 
 		public interface INode
@@ -25,7 +25,7 @@ namespace RevengeSolver
 
 			LinkedList<M> getMoves ();
 
-			INode copyAndMove (M move);
+			INode move (M move);
 
 		}
 			
@@ -60,7 +60,7 @@ namespace RevengeSolver
 					INode bNode = nodeQueue.Dequeue ();
 
 					foreach (M move in this.moves) {
-						INode mNode = bNode.copyAndMove (move);
+						INode mNode = bNode.move (move);
 						T id = mNode.getID ();
 						if (nodeSet.Contains (id)) {
 							continue;

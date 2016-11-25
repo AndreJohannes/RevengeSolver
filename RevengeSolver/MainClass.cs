@@ -88,11 +88,12 @@ namespace RevengeSolver
 		{
 
 			LinkedList<IPhase> phases = new LinkedList<IPhase> ();
-			//phases.AddLast (new Phase8 ());
-			//phases.AddLast (new Phase7 ());
-			//phases.AddLast (new Phase6 ());
-			//phases.AddLast (new Phase5 ());
-			phases.AddLast (new Phase4());
+			phases.AddLast (new Phase8 ());
+			phases.AddLast (new Phase7 ());
+			phases.AddLast (new Phase6 ());
+			phases.AddLast (new Phase5 ());
+			phases.AddLast (new Phase4 ());
+			phases.AddLast (new Phase3 ());
 
 			Cube cube = new Cube ();
 

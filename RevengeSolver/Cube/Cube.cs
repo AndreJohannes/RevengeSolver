@@ -104,6 +104,17 @@ namespace RevengeSolver
 			}
 		}
 
+		public int[] EdgeOrientation {
+			get { 
+				int[] retArray = new int[_edgePosition.Length];
+				int[] signs = Edge.getSigns ();
+				for (int i = 0; i < 24; i++) {
+					retArray [i] = signs [i] * signs [_edgePosition [i]] == 1 ? 0 : 1;
+				}
+				return retArray;
+			}
+		}
+
 		public LinkedList<Twist> Twists {
 			get{ return _twists; }
 		}

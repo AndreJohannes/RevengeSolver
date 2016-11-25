@@ -54,7 +54,7 @@ namespace RevengeSolver
 				return retList;
 			}
 
-			public BFSearch<long , Twist>.INode copyAndMove (Twist move)
+			public BFSearch<long , Twist>.INode move (Twist move)
 			{
 				Node retObject = new Node (move.apply (_cornerPosition, Type.Corners),
 					                 move.apply (_pairPosition, Type.EdgePairs), move);
