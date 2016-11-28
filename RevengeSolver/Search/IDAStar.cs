@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace RevengeSolver
 {
-
+	/// <summary>
+	/// Implementation of the IDA* search algorithm
+	/// </summary>
 	public class IDAStar<M>
 	{
-		/// <summary>
-		/// Implementation of the IDA* search algorithm
-		/// </summary>
+		
 		public interface INode{
 
 			float getDistance();

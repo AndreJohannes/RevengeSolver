@@ -17,16 +17,16 @@ namespace RevengeSolver
 
 		private class oCube: Cube
 		{
-			public LinkedList<Twist> Twists {
+			public new LinkedList<Twist> Twists{
 				get{ throw new MissingMethodException ("Method for oCube not supported"); }
 			}
 
-			public void twist (LinkedList<Twist> twists)
+			public new void twist (LinkedList<Twist> twists)
 			{ 
 				throw new MissingMethodException ("Method for oCube not supported");
 			}
 
-			public void twist (Twist twist)
+			public new void twist (Twist twist)
 			{
 				throw new MissingMethodException ("Method for oCube not supported");
 			}

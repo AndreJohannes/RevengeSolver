@@ -58,7 +58,6 @@ namespace RevengeSolver
 		protected override bool OnExposeEvent (Gdk.EventExpose args)
 		{
 			using (Context g = Gdk.CairoHelper.Create (args.Window)) {
-				Random random = new Random ();
 				int idx = 0;
 				foreach (Rectangle rectangle in rectangles) {
 					g.Rectangle (rectangle);

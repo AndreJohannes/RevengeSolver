@@ -20,10 +20,6 @@ namespace RevengeSolver
 
 			ColorCube cube = new ColorCube ();
 		
-			int[] edges = Enumerable.Range (0, 24).ToArray ();
-			int[] corners = Enumerable.Range (0, 8).ToArray ();
-			int[] orientations = new int[8];
-		
 			CubeCanvas cubeCanvas = new CubeCanvas ();
 			cubeCanvas.Colors = cube.colors; 
 

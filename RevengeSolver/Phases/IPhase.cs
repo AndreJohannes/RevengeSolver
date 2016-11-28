@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace RevengeSolver
 {
+	/// <summary>
+	/// Interface for 
+	/// </summary>
 	public interface IPhase
 	{
 
