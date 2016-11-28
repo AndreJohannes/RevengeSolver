@@ -7,7 +7,7 @@ namespace RevengeSolver
 	public class IDAStar<M>
 	{
 		/// <summary>
-		/// Implementation of the IDA* algorithm
+		/// Implementation of the IDA* search algorithm
 		/// </summary>
 		public interface INode{
 

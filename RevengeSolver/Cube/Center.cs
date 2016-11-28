@@ -4,8 +4,13 @@ namespace RevengeSolver
 {
 
 	/// <summary>
-	/// A class representing all center pieces. 
-	/// </summary>
+	/// A class representing all center pieces. Each face 
+	/// has 4 center pieces. Hence all center pieces are 
+	/// labeled U1..U4, R1..R4.....
+	/// Center pieces of given color are group theoretically 
+	/// not distinguishable and the index 1 to 4 only refers
+	/// to the pieces position on the respective face.  
+	/// 
 	public class Center
 	{
 

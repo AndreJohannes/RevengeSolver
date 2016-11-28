@@ -25,10 +25,10 @@ namespace RevengeSolver {
 			public string getID () {
 				StringBuilder stringBuilder = new StringBuilder ();
 				foreach (int pos in _cornerPosition) {
-					stringBuilder.AppendFormat("{0:X1}",pos);
+					stringBuilder.AppendFormat("{0:X1}", pos);
 				}
 				foreach (int pos in _pairPosition) {
-					stringBuilder.AppendFormat("{0:X1}",pos);
+					stringBuilder.AppendFormat("{0:X1}", pos);
 				}
 				return stringBuilder.ToString ();
 			}

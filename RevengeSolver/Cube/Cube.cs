@@ -4,6 +4,14 @@ using System.Linq;
 
 namespace RevengeSolver
 {
+	/// <summary>
+	/// 
+	/// Class representing Rubik's revenge cube. The state of the cube is 
+	/// unequivocally defined by the cube's edge positions, corner positions, 
+	/// corner orientations (each corner has 3 possible orientations) and 
+	/// the center pieces.
+	/// 
+	/// </summary>
 	public class Cube
 	{
 

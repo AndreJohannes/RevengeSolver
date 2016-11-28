@@ -13,7 +13,8 @@ namespace RevengeSolver
 	}
 
 	/// <summary>
-	/// A class that represents all twists of rubik's revenge cube.  
+	/// A class that represents all twists of rubik's revenge cube. The class also implements 
+	/// the logic to apply the twist to a permutation array representing the corner, edge and center pieces.  
 	/// </summary>
 	public class Twist
 	{
@@ -137,10 +138,11 @@ namespace RevengeSolver
 				pairOrientation = twist.apply (pairOrientation, Type.EdgePairs, orientation: true);
 				edgeOrientation = twist.apply (edgeOrientation, Type.Edges, orientation: true);
 			}
-			// Set the inverse elements
+			// Set the inverse elements; the inverse used so the search algorithm 
+			// does not need to return and search where its coming from
 			switch (num) {
 			case 2:
-				this.inverse = this;
+						this.inverse = this;
 				break;
 			case 3:
 				this.inverse = twist;
@@ -171,7 +173,7 @@ namespace RevengeSolver
 		}
 
 		/// <summary>
-		/// Apply the specified configuration, type and orientation.
+		/// Apply the twist to specified configuration, type and orientation.
 		/// </summary>
 		/// <param name="configuration">Configuration.</param>
 		/// <param name="type">Type.</param>

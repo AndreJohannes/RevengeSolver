@@ -4,7 +4,10 @@ using RevengeSolver;
 namespace RevengeSolver {
 
 	/// <summary>
-	/// A class representing all corner pieces. 
+	/// A class representing all corner pieces. Corner pieces are labeled 
+	/// by refering to the three faces meeting at location of the corner.
+	/// Eg. the corner where the Upper, the Left and the Back face meet 
+	/// is labeled: ULB.
 	/// </summary>
 	public class Corner {
 
