@@ -130,6 +130,10 @@ namespace RevengeSolver
 			return retArray;
 		}
 
+		/// <summary>
+		/// We implement Equals and GetHashCode to be able to identify an edge by its 
+		/// two face(color) values and not by the instance.
+		/// </summary>
 		public override bool Equals (object obj)
 		{
 			var item = obj as Edge;

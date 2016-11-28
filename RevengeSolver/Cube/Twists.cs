@@ -119,6 +119,11 @@ namespace RevengeSolver
 
 		}
 
+		/// <summary>
+		/// The Twist R2 equals two consecutive R twists. Consequently we 
+		/// can easily generate the corresponding permutation arrays by applying 
+		/// R twice. 
+		/// </summary>
 		private Twist (string name, Twist twist, int num)
 		{
 			_name = name;
@@ -175,9 +180,6 @@ namespace RevengeSolver
 		/// <summary>
 		/// Apply the twist to specified configuration, type and orientation.
 		/// </summary>
-		/// <param name="configuration">Configuration.</param>
-		/// <param name="type">Type.</param>
-		/// <param name="orientation">If set to <c>true</c> orientation.</param>
 		public int[] apply (int[] configuration, Type type, Boolean orientation = false)
 		{
 			int[] retArray = new int[configuration.Length];

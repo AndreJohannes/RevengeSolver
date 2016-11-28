@@ -14,7 +14,10 @@ namespace RevengeSolver
 	/// </summary>
 	public class Cube
 	{
-
+		/// <summary>
+		/// oCube is the cube in its original configuration.
+		/// Therefor we disallow any twist. 
+		/// </summary>
 		private class oCube: Cube
 		{
 			public new LinkedList<Twist> Twists{
@@ -26,7 +29,7 @@ namespace RevengeSolver
 				throw new MissingMethodException ("Method for oCube not supported");
 			}
 
-			public new void twist (Twist twist)
+			public new uvoid twist (Twist twist)
 			{
 				throw new MissingMethodException ("Method for oCube not supported");
 			}
